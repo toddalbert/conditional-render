@@ -1,5 +1,5 @@
 import React from 'react'
-import User from './user'
+import { Link } from 'react-router-dom'
 
 class Dummy extends React.Component {
   constructor(props) {
@@ -16,11 +16,8 @@ class Dummy extends React.Component {
         <button
           onClick={() => this.setState({ isLoggedIn: !isLoggedIn })}>
           {(isLoggedIn) ? 'LOGOUT' : 'Sign In'}</button>
-        <User
-          age={28}
-          name='Bobby'
-          isLoggedIn={isLoggedIn} />
-        <User age={45} isLoggedIn={isLoggedIn} name='Todd' />
+        <Link className="App-link" to="/todd">Todd</Link>
+        <Link className="App-link" to="/becca">Becca</Link>
       </>
     )
   }
