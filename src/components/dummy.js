@@ -9,27 +9,18 @@ class Dummy extends React.Component {
     }
   }
   render() {
-    if (!this.state.isLoggedIn) {
-      return (
-        <>
-          <h1>Hello Guest</h1>
-          <button
-            onClick={() => this.setState({ isLoggedIn: true })}>
-            Login</button>
-        </>
-      )
-    }
+    const { isLoggedIn } = this.state
     return (
       <>
-        <h1 className="greeting">Hello USER!!</h1>
+        <h1>Hello {(isLoggedIn) ? 'USER!!' : 'Guest'}</h1>
         <button
-          onClick={() => this.setState({ isLoggedIn: false })}>
-          LOGOUT</button>
+          onClick={() => this.setState({ isLoggedIn: !isLoggedIn })}>
+          {(isLoggedIn) ? 'LOGOUT' : 'Sign In'}</button>
         <User
           age={28}
-          isLoggedIn={this.state.isLoggedIn}
           name='Bobby'
-        />
+          isLoggedIn={isLoggedIn} />
+        <User age={45} isLoggedIn={isLoggedIn} name='Todd' />
       </>
     )
   }
